@@ -1,0 +1,13 @@
+{% extends "layout.html"%}
+{% block title%}Locos por los discos{%endblock title%}
+
+{% block content %}
+<h1>{{ form.instance.pk|yesno:"Edit Album,Add New Album" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'album_manager:album_list' %}">Volver al catálogo</a>
+
+{% endblock content%}

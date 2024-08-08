@@ -1,0 +1,12 @@
+{% extends "layout.html"%}
+{% block title%}Locos por los discos - Home{%endblock title%}
+
+{% block content %}
+<h2>Estás seguro que quieres eliminar?"{{ artist.first_name }} {{ artist.last_name }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, sin miedo</button>
+    </form>
+    <a href="{% url 'album_manager:artist_list' %}">Cancelar</a>
+
+{% endblock content%}

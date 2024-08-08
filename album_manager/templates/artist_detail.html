@@ -1,0 +1,14 @@
+{% extends "layout.html"%}
+{% block title %}Artista{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">{{ form.instance.pk|yesno:"Editar Artista,Agregar Nuevo Artista" }}</h2>
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'album_manager:artist_list' %}" class="btn btn-secondary">Volver al catálogo de artistas</a>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Confirmar eliminación{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">¿Estás seguro que quieres borrar "{{ album.title }}"?</h1>
+    <form method="post" class="mb-3">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, sin miedo</button>
+        <a href="{% url 'album_manager:album_list' %}" class="btn btn-secondary ml-2">Cancelar</a>
+    </form>
+</div>
+{% endblock content %}

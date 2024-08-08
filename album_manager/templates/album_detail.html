@@ -1,0 +1,15 @@
+{% extends "layout.html"%}
+{% block title %}{{ album.title }} - Detalles{% endblock title %}
+
+{% block content %}
+    <h2>{{ album.title }}</h2>
+    <p>Artista: {{ album.artist }}</p>
+    <p>Año de lanzamiento: {{ album.year_release }}</p>
+    <p>Género: {{ album.gender }}</p>
+    <a href="{% url 'album_manager:album_update' album.pk %}">Editar</a>
+    <form method="post" action="{% url 'album_manager:album_delete' album.pk %}">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'album_manager:album_list' %}">Volver al catálogo</a>
+{% endblock content %}

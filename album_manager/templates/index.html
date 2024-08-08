@@ -1,0 +1,27 @@
+{% extends "layout.html"%}
+{% block title%}Locos por los discos - Home{%endblock title%}
+
+{% block content %}
+   <div class="container mt-5">
+    <h2 class="mb-4">Top 5 de álbums más comprados</h2>
+    <ul class="list-group mb-5">
+        {% for album in albums %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>{{ album}}</span>
+                <a href="{% url 'album_manager:album_detail' album.pk %}" class="btn btn-primary btn-sm">Ver detalles</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="mb-4">Top 5 de artistas más recomendados</h2>
+    <ul class="list-group">
+        {% for artist in artists %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>{{ artist }}</span>
+                <a href="{% url 'album_manager:artist_detail' artist.pk %}" class="btn btn-primary btn-sm">Ver detalles</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content%}
